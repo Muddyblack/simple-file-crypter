@@ -1,0 +1,15 @@
+lib/
+*.pem
+venv/
+**/keys/** 
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+*.log
+__pycache__/
+*.egg-info/
+*.egg
+build/
+dist/
