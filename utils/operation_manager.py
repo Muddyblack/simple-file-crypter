@@ -6,10 +6,8 @@ from typing import Callable, Optional, Tuple
 
 from rich.console import Console
 from rich.prompt import Confirm, Prompt
-import typer
 
 from core.keys import KeyManager
-from ui.file_dialog import open_save_dialog
 from utils.input_handlers import get_directory_path, get_file_path, get_output_path, get_password
 from utils.path_detector import is_encrypted_directory_archive
 from utils.progress_handler import execute_with_progress
@@ -993,38 +991,3 @@ def check_and_verify_signature_before_decryption(
             console.print("[yellow]Decryption cancelled for security reasons.[/yellow]")
             
         return proceed
-
-def get_output_path(input_path: str, default_extension: str = ".sfc") -> Optional[str]:
-    """
-    Get an output path for saving a file
-    
-    Args:
-        input_path: The input file path
-        default_extension: The default extension to use
-        
-    Returns:
-        The output path or None if canceled
-    """
-    default_output = f"{input_path}{default_extension}"
-    use_default = Confirm.ask(f"Save as '{default_output}'? [Enter=Yes]", default=True)
-    
-    if use_default:
-        return default_output
-        
-    output_path_input = typer.prompt("Enter output path (or -e/-ef for file explorer)")
-    
-    # Check if user wants to use file explorer for output path
-    if output_path_input.lower() in ['-e', '-ef', '--explorer']:
-        output_path = open_save_dialog("Save file as")
-        
-        if not output_path:  # User canceled the dialog
-            console.print("[yellow]Output file selection canceled. Using default path.[/yellow]")
-            return default_output
-            
-        # Make sure the file has the expected extension
-        if default_extension and not output_path.lower().endswith(default_extension.lower()):
-            output_path += default_extension
-    else:
-        output_path = output_path_input.strip().strip("'").strip('"')
-        
-    return output_path

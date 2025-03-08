@@ -175,9 +175,9 @@ def get_smart_path(prompt_text: str, for_saving: bool = False) -> Tuple[Optional
     Returns:
         Tuple of (path, type) where type is "file", "directory", or None if canceled
     """
-    from utils.input_handlers import get_directory_path, get_file_path
     from ui.file_dialog import open_directory_dialog, open_file_dialog
     from ui.file_display import display_selected_directory, display_selected_file
+    from utils.input_handlers import get_directory_path, get_file_path
     
     path = None
     path_type = None

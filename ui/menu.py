@@ -3,11 +3,11 @@ Menu components for FileCrypter application.
 These components create navigation menus and structured UI elements.
 """
 
-from rich.table import Table
 from rich.panel import Panel
-from rich.text import Text
+from rich.table import Table
 
 from . import console
+
 
 def display_menu_header(title, parent=None, grand_parent=None):
     """Display a menu title with navigation breadcrumbs"""
@@ -74,11 +74,11 @@ def display_quick_menu(title, options):
     console.print(f"[blue]{title}[/blue]")
     
     # Display options
-    for i, (value, description) in enumerate(options, 1):
+    for i, (_value, description) in enumerate(options, 1):
         console.print(f"[cyan]{i}.[/cyan] {description}")
     
     # Add cancel option
-    console.print(f"[cyan]0.[/cyan] Cancel")
+    console.print("[cyan]0.[/cyan] Cancel")
     
     # Get user input
     try:
