@@ -115,6 +115,3 @@ MIT License - See LICENSE file for details.
    - Verify file integrity
    - Check if it's the correct file format
 
-## Author
-
-Your Name (@Muddyblack)
