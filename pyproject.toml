@@ -12,6 +12,7 @@ dependencies = [
     "cryptography>=36.0.0",
     "rich>=12.0.0",
     "typer>=0.4.0",
+    "psutil",
 ]
 
 [project.optional-dependencies]
